@@ -1,0 +1,25 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+//_Klavyeden girilenleri sayilar ve karakterler olarak ayiran dosya yazimi_
+public class Dosyalar {
+    public static void main(String [] args)  throws Exception{
+    Scanner k = new Scanner(System.in);
+    File numbers = new File("numbers.txt");
+    File characters = new File("characters.txt");
+    PrintWriter n1 = new PrintWriter(numbers);
+    PrintWriter c1 = new PrintWriter(characters);
+      for(int i=0;i<5;i++){
+      String str = k.nextLine();
+        for(int j=0;j<str.length();j++){
+        if((str.charAt(j)-48) >= 0  &&  (str.charAt(j)-48) <= 9){
+         n1.println(str.charAt(j));
+        }else{
+        c1.println(str.charAt(j));
+        }
+        }
+        n1.close();       c1.close();
+      }
+    }
+}
