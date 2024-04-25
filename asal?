@@ -1,0 +1,26 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+public class Dosyalar {
+//_"gamze.txt" adli dosyadaki asal sayilari asal.txt dosyasina atma islemi_
+    public static boolean asal(int number){
+    if(number <= 1)  return false;
+    for(int i=2;i<=Math.sqrt(number);i++){
+     if(number % i == 0)   return false; 
+    }
+    return true;
+    }
+public static void main(String [] args) throws Exception{
+Scanner k= new Scanner(new File("gamze.txt"));
+FileWriter f1 = new FileWriter("asal.txt");
+PrintWriter p1 = new PrintWriter(f1);
+while(k.hasNextInt()){
+int number = k.nextInt();
+if(asal(number)){
+p1.println(number);
+}
+}
+p1.close();     f1.close();     k.close();
+}
+}
