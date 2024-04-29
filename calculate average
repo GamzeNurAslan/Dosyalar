@@ -1,0 +1,20 @@
+//"Notlar.txt" isimli bir metin dosyasinda bir vize sinavindan ogrencilerin farkli derslerden aldigi notlar bulunmaktadir.Dosyadaki her bir ders icin not
+//ortalamasini hesaplayan Java programini calistirin?
+import java.io.File;
+import java.util.Scanner;
+public class Dosyalar{
+public static void main(String [] args)  throws Exception{
+File f1 = new File("notlar.txt");
+Scanner k = new Scanner(f1);
+while(k.hasNext()){
+String str = k.next();
+    System.out.print(str+":");
+    if(!((str.charAt(0)-48) >= 0) &&  (str.charAt(0)-48) <= 9){
+    double sayac = 0;
+    double ortalama = 0;
+    while(k.hasNextInt()){
+    ortalama+=k.nextInt();
+    sayac++;
+    }
+        System.out.println(ortalama/sayac);
+    }}}}
