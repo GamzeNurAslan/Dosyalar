@@ -1,0 +1,18 @@
+//_gamze.txt dosyasi icindeki 60. ve 70. satir arasindaki bilgileri okuyup ekrana yazan Java programi_
+import java.io.File;
+import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.IOException;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+File dosya = new File("gamze.txt");
+Scanner k = new Scanner(dosya);
+int sayac = 1;
+while(k.hasNextInt()){
+if(sayac>60   &&   sayac<70)     System.out.println(k.nextLine());
+else       k.nextLine();
+sayac++;
+}
+k.close();
+}
+}
