@@ -1,0 +1,23 @@
+//_Klavyeden girilen ad_soyad_not bilgisini ogrenci.txt dosyasina yazan Java programi_
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.io.File;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+File dosya = new File("student.txt");
+PrintWriter veri;
+Scanner k = new Scanner(System.in);
+if(!dosya.exists())   dosya.createNewFile();
+else{
+veri = new PrintWriter(dosya);
+for(int j=0;j<3;j++){
+    System.out.print(j+".öğrenci adi,soyadi,ve notu = ");
+    String ad = k.next();
+    String soyad = k.next();
+    int not = k.nextInt();
+    veri.println(ad+" "+soyad+" "+not);
+}
+veri.close();
+}
+}
+}
