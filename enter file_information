@@ -1,0 +1,43 @@
+//_Klavyeden girilen 3 kişiye ait ad_soya_no bilgilerini "gmz.txt" dosyasina 3 kere yazan Java programi_
+//FileWriter hali:
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+Scanner k = new Scanner(System.in);
+File dosya = new File("gmz.txt");
+FileWriter yaz = new FileWriter(dosya);
+for(int i=0;i<3;i++){
+String ad = k.nextLine();
+String soyad = k.nextLine();
+int no = k.nextInt();
+yaz.write("Ad="+ad+"\nSoyad="+soyad+"\nNo="+no);
+k.nextLine();
+}
+yaz.close();
+}
+}
+//-------------------------------------------------------------------------------------------------//
+//Ustteki ornegin PrintWriter hali :)
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Scanner;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+Scanner k = new Scanner(System.in);
+File dosya = new File("gmz.txt");
+PrintWriter yaz = new PrintWriter(dosya);
+for(int i=0;i<3;i++){
+    System.out.println((i+1)+".kişinin adı:");
+    String ad = k.nextLine();
+    System.out.println((i+1)+".kişinin soyadı:");
+    String soyad = k.nextLine();
+    System.out.println((i+1)+".kişinin numarası:");
+    int no = k.nextInt();
+    yaz.println("Ad:"+ad+"\nSoyad:"+soyad+"\nNumara:"+no);
+    k.nextLine();
+}
+yaz.close();
+}
+}
