@@ -1,0 +1,26 @@
+//_Klavyeden Stringler giriliyor,girilen Stringler icindeki 'a' ya da 'A' ile baslayanlari "str.txt" dosyasinin icine yazan ve de dosyanin icindeki String
+//sayisi 5 olunca biten Java programi_
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+Scanner k = new Scanner(System.in);
+File dosya = new File("str.txt");
+PrintWriter yaz = new PrintWriter(dosya);
+int durum = 0;
+while(durum < 5){
+    System.out.println("Giriş yapınız:");
+    String str = k.nextLine();
+    if((str.charAt(0) == 'a')  ||  str.charAt(0) == 'A'){
+    yaz.println(str);
+    durum++;
+    }
+}
+yaz.close();
+Scanner m = new Scanner(dosya);
+while(m.hasNext())    System.out.println(m.nextLine());
+m.close();
+}
+}
