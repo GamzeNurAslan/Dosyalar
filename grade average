@@ -1,0 +1,22 @@
+//_"notlar.txt" adlı bir dosyadaki bir vize sınavından öğrencilerin farklı derslerden aldıkları notlar vardır.Dosyadaki her bir ders için not ortalamasını hesaplayan Java kodunu yazın_
+import java.io.File;
+import java.util.Scanner;
+public class Dosyalar{
+public static void main(String [] args) throws Exception{
+File f = new File("notlar.txt");
+Scanner k = new Scanner(f);
+while(k.hasNext()){
+String str = k.next();
+System.out.print(str+":");
+if(!(str.charAt(0) - 48 >= 0)  &&  (str.charAt(0) - 48 <= 9)){
+double ortalama = 0;
+double sayac = 0;
+while(k.hasNextInt()){
+ortalama += k.nextInt();
+sayac++;
+}
+    System.out.println(ortalama/sayac);
+}
+}
+}
+}
