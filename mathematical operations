@@ -1,0 +1,39 @@
+public class Matematik {
+
+    // Karekök hesaplama metodu
+    public static double karekok(double sayi) {
+        if (sayi < 0) {
+            throw new IllegalArgumentException("Negatif sayının karekökü bulunamaz.");
+        }
+        return Math.sqrt(sayi);
+    }
+
+    // Sinüs hesaplama metodu (radyan cinsinden)
+    public static double sin(double derece) {
+        return Math.sin(Math.toRadians(derece));
+    }
+
+    // Cosinüs hesaplama metodu (radyan cinsinden)
+    public static double cos(double derece) {
+        return Math.cos(Math.toRadians(derece));
+    }
+
+    // Mutlak değer hesaplama metodu
+    public static int mutlakDeger(int sayi) {
+        return (sayi < 0) ? -sayi : sayi;
+    }
+
+    // İki sayı arasında en büyük olanı bulma metodu
+    public static int enBuyuk(int sayi1, int sayi2) {
+        return Math.max(sayi1, sayi2);
+    }
+
+    public static void main(String[] args) {
+        double sayi = 25.0;
+        System.out.println(sayi + " sayısının karekökü: " + karekok(sayi));
+        System.out.println("30 derece sinüs değeri: " + sin(30));
+        System.out.println("60 derece cosinüs değeri: " + cos(60));
+        System.out.println("-5'in mutlak değeri: " + mutlakDeger(-5));
+        System.out.println("25 ve 30 arasında en büyük sayı: " + enBuyuk(25, 30));
+    }
+}
