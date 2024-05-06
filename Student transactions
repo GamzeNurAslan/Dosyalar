@@ -1,0 +1,69 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class OgrenciIslemleri {
+
+    // Dosyadan öğrenci bilgilerini okuyarak diziye aktaran metot
+    public static Ogrenci[] ogrenciBilgileriniOku(String dosyaAdi) throws FileNotFoundException {
+        File dosya = new File(dosyaAdi);
+        Scanner scanner = new Scanner(dosya);
+
+        Ogrenci[] ogrenciler = new Ogrenci[30];
+        int index = 0;
+
+        while (scanner.hasNextLine()) {
+            String[] bilgiler = scanner.nextLine().split(",");
+            int numara = Integer.parseInt(bilgiler[0]);
+            String ad = bilgiler[1];
+            double agno = Double.parseDouble(bilgiler[2]);
+            ogrenciler[index] = new Ogrenci(numara, ad, agno);
+            index++;
+        }
+
+        scanner.close();
+        return ogrenciler;
+    }
+
+    // Verilen AGNO'dan büyük olan öğrencileri ayrı bir dizi olarak döndüren metot
+    public static Ogrenci[] agnoBuyukOlanlariBul(Ogrenci[] ogrenciler, double agnoSiniri) {
+        int count = 0;
+        for (Ogrenci ogrenci : ogrenciler) {
+            if (ogrenci.getAgno() > agnoSiniri) {
+                count++;
+            }
+        }
+
+        Ogrenci[] buyukler = new Ogrenci[count];
+        int index = 0;
+        for (Ogrenci ogrenci : ogrenciler) {
+            if (ogrenci.getAgno() > agnoSiniri) {
+                buyukler[index] = ogrenci;
+                index++;
+            }
+        }
+
+        return buyukler;
+    }
+
+    // Test
+    public static void main(String[] args) {
+        try {
+            Ogrenci[] ogrenciler = ogrenciBilgileriniOku("ogrenci_bilgileri.txt");
+            
+            // AGNO'su en yüksek olan öğrenciyi bulma
+            Ogrenci maxAgnoOgrenci = ogrenciAGNOsuEnBuyukOlan(ogrenciler);
+            System.out.println("AGNO'su en yüksek öğrenci: " + maxAgnoOgrenci);
+            
+            // Belirli bir AGNO'dan büyük olan öğrencileri bulma
+            double sinirAGNO = 3.5;
+            Ogrenci[] buyukler = agnoBuyukOlanlariBul(ogrenciler, sinirAGNO);
+            System.out.println("AGNO'su " + sinirAGNO + " olan öğrenciler:");
+            for (Ogrenci ogrenci : buyukler) {
+                System.out.println(ogrenci);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Dosya bulunamadı.");
+        }
+    }
+}
